@@ -1,0 +1,76 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="BlogMigrator.MainWindow"    
+	x:Name="Window"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+	Title="Blog Migrator"
+	Width="700" Height="600">
+         
+    <DockPanel x:Name="LayoutRoot">
+		<Menu x:Name="mnuMain" Height="30" DockPanel.Dock="Top">
+			<MenuItem x:Name="mnuFile" Header="File">
+				<MenuItem x:Name="mnuFileQuit" Header="Quit" Click="mnuFileQuit_Click" />
+			</MenuItem>
+
+         <MenuItem Name="mnuTools" Header="Tools">
+            <MenuItem Name="mnuToolsRewrite" Header="Rewrite Source Posts" Click="mnuToolsRewrite_Click" />
+         </MenuItem>
+
+         <MenuItem x:Name="mnuHelp" Header="Help">
+               <MenuItem x:Name="mnuHelpAbout" Header="About" Click="mnuHelpAbout_Click" />
+         </MenuItem>                 
+        </Menu>
+        
+		<StatusBar x:Name="StatusBar" Height="30" DockPanel.Dock="Bottom">
+			<StatusBarItem x:Name="StatusBarMessage" Content="Blog Migrator 1.0"/>
+		</StatusBar>
+        
+		<Grid DockPanel.Dock="Top" >
+			<Grid.RowDefinitions>
+     			<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+     			<ColumnDefinition />
+     			<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+
+            <Button Name="btnConfigureSource" Grid.Row="0" Grid.Column="0" Content="Configure Source Blog" Width="200" Height="100" Click="btnConfigureSource_Click">
+            </Button>
+            <Button Name="btnConfigureDestination" Grid.Row="0" Grid.Column="1" Content="Configure Destination Blog" Width="200" Height="100" Click="btnConfigureDestination_Click"></Button>
+                
+		</Grid>
+        
+        <StackPanel DockPanel.Dock="Top">
+            <Button Name="btnGetAllPosts" Width="150" Height="30" Content="Get Posts From Source" Click="btnGetAllPosts_Click"></Button>
+        </StackPanel>
+        
+		<StackPanel DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="lblEntriesHeader" FontWeight="Bold">Select Entries to Migrate...</Label>
+                <Label x:Name="lblEntriesCount" FontWeight="Black">[0 Total]</Label>
+            <Button Name="btnSelectAllPosts" IsEnabled="False" Click="btnSelectAllPosts_Click">Select All</Button>
+         </StackPanel>			
+
+            <ListView Name="lsvAllPosts" ItemsSource="{Binding PostCollection}" Height="152">
+                <ListView.View>
+                    <GridView>                        
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=postid}">Id</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=title}">Title</GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <CheckBox x:Name="chkUpdateSource" Height="20" Content="Update source entries with redirect message below. [URL] tag will be replaced with destination link."></CheckBox>
+            
+            <TextBox x:Name="txtUpdateSource" Height="46" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">My blog has moved. You can view this post at the following address: [URL]</TextBox>
+
+            <Button x:Name="btnMigrate" Height="30" Width="150" IsEnabled="False" Click="btnMigrate_Click">Migrate Selected Posts</Button>
+        </StackPanel>
+       
+        <Label x:Name="lblStatus" DockPanel.Dock="Top" Content="Status..."></Label>
+        
+        <TextBox x:Name="txtStatus" TextWrapping="Wrap" Height="Auto" VerticalScrollBarVisibility="Visible" />		
+	</DockPanel>
+</Window>

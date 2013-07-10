@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{902EB125-350F-4E9F-9F5D-36ECF3058E09}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <DefaultClrNameSpace>BlogMigrator</DefaultClrNameSpace>
+    <RootNamespace>BlogMigrator</RootNamespace>
+    <AssemblyName>BlogMigrator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ApplicationIcon>Application.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BlogML">
+      <HintPath>resources\BlogML.dll</HintPath>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BlogML.cs">
+      <DependentUpon>BlogML.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="objects\Comment.cs" />
+    <Compile Include="ConfigureDestination.xaml.cs">
+      <DependentUpon>ConfigureDestination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigureSource.xaml.cs">
+      <DependentUpon>ConfigureSource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionHelpWindow.xaml.cs">
+      <DependentUpon>ConnectionHelpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="objects\Generator.cs" />
+    <Compile Include="MetaweblogAPI.cs" />
+    <Compile Include="MigrationWorker.cs" />
+    <Compile Include="objects\BlogSource.cs" />
+    <Compile Include="objects\LogData.cs" />
+    <Compile Include="objects\PostData.cs" />
+    <Compile Include="objects\Services.cs" />
+    <Compile Include="AllPostsWorker.cs" />
+    <Compile Include="objects\WorkerArgs.cs" />
+    <Compile Include="RewriteSourcePosts.xaml.cs">
+      <DependentUpon>RewriteSourcePosts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RewriteWorker.cs" />
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfigureDestination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfigureSource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectionHelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="RewriteSourcePosts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+    <None Include="app.config" />
+    <None Include="Application.ico">
+      <Visible>false</Visible>
+    </None>
+    <None Include="BlogML.xsd" />
+    <None Include="resources\BlogML.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Application.ico" />
+    <Content Include="resources\BlogML.dll" />
+    <Content Include="resources\CookComputing.XmlRpcV2.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath32)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	     Other similar extension points exist, see Microsoft.Common.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

@@ -1,0 +1,62 @@
+﻿<Window x:Class="BlogMigrator.ConfigureSource"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Configure Source Blog" Height="300" Width="360">
+   <StackPanel>
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblSourceHeader" Content="Specify Source Blog Details..." FontWeight="Bold" />
+         <Button x:Name="btnSourceHelp" Content=" ? " Click="btnSourceHelp_Click"></Button>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblService" Content="Blog Service:" />
+         <ComboBox x:Name="cmbSourceService" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="ASP.Net Weblogs" Tag="ASPNet" />
+            <ComboBoxItem Content="SquareSpace" Tag="SS" />
+            <ComboBoxItem Content="WordPress" Tag="WP" />
+            <ComboBoxItem Content="Other Service (Specify Service URL)" Tag="OTHER" />
+            <ComboBoxItem Content="BlogML File (Specify File and Root URL)" Tag="FILE" />
+         </ComboBox>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblSourceServiceUrl" Content="Service Url:" />
+         <TextBox x:Name="txtSourceServiceUrl" Width="256" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblSourceBlogUrl" Content="Blog Root Url:" />
+         <TextBox x:Name="txtSourceBlogUrl" Width="241" />
+      </StackPanel>
+        
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblSourceBlogId" Content="Blog Id:" />
+         <TextBox x:Name="txtSourceBlogId" Width="274" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblSourceUser" Content="User Id:" />
+         <TextBox x:Name="txtSourceUser" Width="275" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblSourcePassword" Content="Password:" />
+         <TextBox x:Name="txtSourcePassword" Width="262" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblSourceFile" Content="Select File:"></Label>
+         <TextBox Name="txtSourceFile" Width="217"></TextBox>
+         <Button Name="btnSourceFile" Content="Browse..." Click="btnSourceFile_Click"></Button>            
+      </StackPanel>
+
+      <StackPanel>
+         <Button Name="btnTestSource" Click="btnTestSource_Click" Width="100">Test Connection</Button>
+      </StackPanel>
+        
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+         <Button Name="btnSaveSource" Click="btnSaveSource_Click" Width="100">Save</Button>
+         <Button Name="btnClose" Content="Close" Width="100" Click="btnClose_Click"></Button>
+      </StackPanel>        
+   </StackPanel>
+</Window>

@@ -1,0 +1,79 @@
+﻿<Window x:Class="BlogMigrator.ConfigureDestination"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ConfigureDestination" Height="300" Width="360">
+   <StackPanel Grid.Row="0" Grid.Column="1">
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationHeader" Content="Specify Destination Details..." FontWeight="Bold" />
+         <Button x:Name="btnDestHelp" Content=" ? " Click="btnDestHelp_Click"></Button>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationService" Content="Blog Service:" />
+         <ComboBox x:Name="cmbDestinationService" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="ASP.Net Weblogs" Tag="ASPNet" />
+            <ComboBoxItem Content="SquareSpace" Tag="SS" />
+            <ComboBoxItem Content="WordPress" Tag="WP" />                
+            <ComboBoxItem Content="Other (Specify Service Url)" Tag="OTHER" />
+            <ComboBoxItem Content="WXR File (Specify File and Root URL)" Tag="FILE" />
+         </ComboBox>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationServiceUrl" Content="Service Url:" />
+         <TextBox x:Name="txtDestinationServiceUrl" Width="261" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationBlogUrl" Content="Blog Root Url:" />
+         <TextBox x:Name="txtDestinationBlogUrl" Width="246" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationBlogId" Content="Blog Id:" />
+         <TextBox x:Name="txtDestinationBlogId" Width="279" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationUser" Content="User Id:" />
+         <TextBox x:Name="txtDestinationUser" Width="280" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationPassword" Content="Password:" />
+         <TextBox x:Name="txtDestinationPassword" Width="267" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblDestinationFile" Content="Select File:"></Label>
+         <TextBox Name="txtDestinationFile" Width="217"></TextBox>
+         <Button Name="btnDestinationFile" Content="Browse..." Click="btnDestinationFile_Click"></Button>
+      </StackPanel>
+
+      <Grid>
+         <Grid.RowDefinitions>
+               <RowDefinition Height="Auto" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+               <ColumnDefinition />
+               <ColumnDefinition />
+         </Grid.ColumnDefinitions>
+
+         <Button Name="btnTestDestination" Width="100" Grid.Row="0" Grid.Column="0" Click="btnTestDestination_Click">Test Connection</Button>
+         <Button Name="btnInsertSample" Width="100" Grid.Row="0" Grid.Column="1" Click="btnInsertSample_Click">Add Sample Post</Button>
+      </Grid>
+
+      <Grid>
+         <Grid.RowDefinitions>
+               <RowDefinition Height="Auto" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+               <ColumnDefinition />
+               <ColumnDefinition />
+         </Grid.ColumnDefinitions>
+            
+         <Button Name="btnSaveSource" Grid.Row="0" Grid.Column="0" Width="100" Click="btnSaveSource_Click">Save</Button>
+         <Button Name="btnClose" Grid.Row="0" Grid.Column="1" Width="100" Click="btnClose_Click">Close</Button>
+      </Grid>
+   </StackPanel>
+</Window>

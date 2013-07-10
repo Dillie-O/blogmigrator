@@ -1,0 +1,56 @@
+﻿<Window x:Class="BlogMigrator.ConnectionHelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Connection Help" Height="474" Width="390">
+    <StackPanel>
+        <TextBlock TextWrapping="Wrap">
+            Depending on the service you are connecting to, the settings will vary:
+        </TextBlock>
+
+        <TextBlock></TextBlock>
+
+        <TextBlock FontWeight="Bold">SquareSpace:</TextBlock>
+        <TextBlock TextWrapping="Wrap" >
+            To find the blogId you want to read/connect to, go to the main page of
+            the blog in question. View the source contents and look for the JavaScript
+            block near the top with a line that reads:  
+        </TextBlock>
+        
+        <TextBlock></TextBlock>
+        
+        <TextBlock TextWrapping="Wrap">
+            Squarespace.Constants.CURRENT_MODULE_ID = "111111"
+        </TextBlock>
+        
+        <TextBlock></TextBlock>
+        
+        <TextBlock TextWrapping="Wrap">
+            The number specified is the blogId you want to use. Your login name will 
+            be your website name (taken from http://[website-name].squarespace.com/), 
+            and your password will be your owner account password.
+        </TextBlock>
+
+        <TextBlock></TextBlock>
+        
+        <TextBlock FontWeight="Bold" TextWrapping="Wrap">
+            WordPress:                                        
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap">
+            WordPress uses a fresh instance of xml-rpc for each blog that is connected
+            to. Simply specify the UserId and Password of the administrator account or
+            another valid publisher's account to connect.
+        </TextBlock>
+
+        <TextBlock></TextBlock>
+
+        <TextBlock FontWeight="Bold" TextWrapping="Wrap">
+            ASP.Net Weblogs
+        </TextBlock>
+
+        <TextBlock TextWrapping="Wrap">
+            Still tracking down this info...
+        </TextBlock>
+        
+        <Button x:Name="btnClose" Click="btnClose_Click">Close</Button>
+    </StackPanel>
+</Window>

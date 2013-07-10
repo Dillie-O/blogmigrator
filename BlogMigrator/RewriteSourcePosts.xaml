@@ -1,0 +1,94 @@
+﻿<Window x:Class="BlogMigrator.RewriteSourcePosts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"   
+	x:Name="Window"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+	   Title="Rewrite Source Posts" Width="548" d:DesignHeight="669" SizeToContent="Height">
+
+   <StackPanel>
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewriteHeader" Content="Specify Source Blog Details..." FontWeight="Bold" />
+         <Button x:Name="btnRewriteHelp" Content=" ? " Click="btnRewriteHelp_Click"></Button>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewriteService" Content="Blog Service:" />
+         <ComboBox x:Name="cmbRewriteService" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="ASP.Net Weblogs" Tag="ASPNet" />
+            <ComboBoxItem Content="SquareSpace" Tag="SS" />
+            <ComboBoxItem Content="WordPress" Tag="WP" />
+            <ComboBoxItem Content="Other Service (Specify Service URL)" Tag="OTHER" />
+         </ComboBox>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewriteFile" Content="Select Log File:"></Label>
+         <TextBox Name="txtRewriteFile" Width="217"></TextBox>
+         <Button Name="btnRewriteFile" Content="Browse..." Click="btnRewriteFile_Click"></Button>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewriteServiceUrl" Content="Service Url:" />
+         <TextBox x:Name="txtRewriteServiceUrl" Width="256" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewriteBlogUrl" Content="Blog Root Url:" />
+         <TextBox x:Name="txtRewriteBlogUrl" Width="241" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewriteBlogId" Content="Blog Id:" />
+         <TextBox x:Name="txtRewriteBlogId" Width="274" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewriteUser" Content="User Id:" />
+         <TextBox x:Name="txtRewriteUser" Width="275" />
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal">
+         <Label x:Name="lblRewritePassword" Content="Password:" />
+         <TextBox x:Name="txtRewritePassword" Width="262" />
+      </StackPanel>      
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+         <Button Name="btnTestRewrite" Click="btnTestRewrite_Click" Width="100">Test Connection</Button>
+         <Button Name="btnLoadLog" Click="btnLoadLog_Click" Width="100">Load Log</Button>
+      </StackPanel>
+
+      <StackPanel DockPanel.Dock="Top">
+         <StackPanel Orientation="Horizontal">
+            <Label x:Name="lblEntriesHeader" FontWeight="Bold">Select Entries to Migrate...</Label>
+            <Label x:Name="lblEntriesCount" FontWeight="Black">[0 Total]</Label>
+            <Button Name="btnSelectAllEntries" IsEnabled="False" Click="btnSelectAllEntries_Click">Select All</Button>
+         </StackPanel>
+
+         <ListView Name="lsvLogEntries" ItemsSource="{Binding LogCollection}" Height="152">
+            <ListView.View>
+               <GridView>
+                  <GridViewColumn DisplayMemberBinding="{Binding Path=sourceId}">Source Id</GridViewColumn>
+                  <GridViewColumn DisplayMemberBinding="{Binding Path=sourceUrl}">Source URL</GridViewColumn>
+                  <GridViewColumn DisplayMemberBinding="{Binding Path=destinationId}">Destination Id</GridViewColumn>
+                  <GridViewColumn DisplayMemberBinding="{Binding Path=destinationUrl}">Destination URL</GridViewColumn>
+               </GridView>
+            </ListView.View>
+         </ListView>
+
+         <Label Name="lblUpdateSource" Height="30" Content="Update source entries with redirect message below. [URL] tag will be replaced with destination link."></Label>
+
+         <TextBox x:Name="txtUpdateSource" Height="46" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">My blog has moved. You can view this post at the following address: [URL]</TextBox>
+
+         <Button x:Name="btnRewrite" Height="30" Width="150" IsEnabled="False" Click="btnRewrite_Click">Rewrite Selected Entries</Button>
+      </StackPanel>
+
+      <Label x:Name="lblStatus" DockPanel.Dock="Top" Content="Status..."></Label>
+
+      <TextBox x:Name="txtStatus" TextWrapping="Wrap" Height="52" VerticalScrollBarVisibility="Visible" />
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+         <Button Name="btnClose" Content="Close" Width="100" Click="btnClose_Click"></Button>
+      </StackPanel>
+   </StackPanel>
+</Window>
