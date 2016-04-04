@@ -70,6 +70,7 @@
     <Compile Include="BlogML.cs">
       <DependentUpon>BlogML.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="objects\Comment.cs" />
     <Compile Include="ConfigureDestination.xaml.cs">
       <DependentUpon>ConfigureDestination.xaml</DependentUpon>
@@ -82,12 +83,12 @@
     </Compile>
     <Compile Include="objects\Generator.cs" />
     <Compile Include="MetaweblogAPI.cs" />
-    <Compile Include="MigrationWorker.cs" />
+    <Compile Include="MainWindow_MigrationWorker.cs" />
     <Compile Include="objects\BlogSource.cs" />
     <Compile Include="objects\LogData.cs" />
     <Compile Include="objects\PostData.cs" />
     <Compile Include="objects\Services.cs" />
-    <Compile Include="AllPostsWorker.cs" />
+    <Compile Include="MainWindow_AllPostsWorker.cs" />
     <Compile Include="objects\WorkerArgs.cs" />
     <Compile Include="RewriteSourcePosts.xaml.cs">
       <DependentUpon>RewriteSourcePosts.xaml</DependentUpon>

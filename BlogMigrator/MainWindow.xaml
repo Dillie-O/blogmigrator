@@ -6,56 +6,56 @@
 	x:Name="Window"
     DataContext="{Binding RelativeSource={RelativeSource Self}}"
 	Title="Blog Migrator"
-	Width="700" Height="600">
-         
+	Width="700" Height="652.239">
+
     <DockPanel x:Name="LayoutRoot">
-		<Menu x:Name="mnuMain" Height="30" DockPanel.Dock="Top">
-			<MenuItem x:Name="mnuFile" Header="File">
-				<MenuItem x:Name="mnuFileQuit" Header="Quit" Click="mnuFileQuit_Click" />
-			</MenuItem>
+        <Menu x:Name="mnuMain" Height="30" DockPanel.Dock="Top">
+            <MenuItem x:Name="mnuFile" Header="File">
+                <MenuItem x:Name="mnuFileQuit" Header="Quit" Click="mnuFileQuit_Click" />
+            </MenuItem>
 
-         <MenuItem Name="mnuTools" Header="Tools">
-            <MenuItem Name="mnuToolsRewrite" Header="Rewrite Source Posts" Click="mnuToolsRewrite_Click" />
-         </MenuItem>
+            <MenuItem Name="mnuTools" Header="Tools">
+                <MenuItem Name="mnuToolsRewrite" Header="Rewrite Source Posts" Click="mnuToolsRewrite_Click" />
+            </MenuItem>
 
-         <MenuItem x:Name="mnuHelp" Header="Help">
-               <MenuItem x:Name="mnuHelpAbout" Header="About" Click="mnuHelpAbout_Click" />
-         </MenuItem>                 
+            <MenuItem x:Name="mnuHelp" Header="Help">
+                <MenuItem x:Name="mnuHelpAbout" Header="About" Click="mnuHelpAbout_Click" />
+            </MenuItem>
         </Menu>
-        
-		<StatusBar x:Name="StatusBar" Height="30" DockPanel.Dock="Bottom">
-			<StatusBarItem x:Name="StatusBarMessage" Content="Blog Migrator 1.0"/>
-		</StatusBar>
-        
-		<Grid DockPanel.Dock="Top" >
-			<Grid.RowDefinitions>
-     			<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-     			<ColumnDefinition />
-     			<ColumnDefinition />
-			</Grid.ColumnDefinitions>
+
+        <StatusBar x:Name="StatusBar" Height="30" DockPanel.Dock="Bottom">
+            <StatusBarItem x:Name="StatusBarMessage" Content="Blog Migrator 1.0"/>
+        </StatusBar>
+
+        <Grid DockPanel.Dock="Top" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
             <Button Name="btnConfigureSource" Grid.Row="0" Grid.Column="0" Content="Configure Source Blog" Width="200" Height="100" Click="btnConfigureSource_Click">
             </Button>
             <Button Name="btnConfigureDestination" Grid.Row="0" Grid.Column="1" Content="Configure Destination Blog" Width="200" Height="100" Click="btnConfigureDestination_Click"></Button>
-                
-		</Grid>
-        
+
+        </Grid>
+
         <StackPanel DockPanel.Dock="Top">
             <Button Name="btnGetAllPosts" Width="150" Height="30" Content="Get Posts From Source" Click="btnGetAllPosts_Click"></Button>
         </StackPanel>
-        
-		<StackPanel DockPanel.Dock="Top">
+
+        <StackPanel DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="lblEntriesHeader" FontWeight="Bold">Select Entries to Migrate...</Label>
                 <Label x:Name="lblEntriesCount" FontWeight="Black">[0 Total]</Label>
-            <Button Name="btnSelectAllPosts" IsEnabled="False" Click="btnSelectAllPosts_Click">Select All</Button>
-         </StackPanel>			
+                <Button Name="btnSelectAllPosts" IsEnabled="False" Click="btnSelectAllPosts_Click">Select All</Button>
+            </StackPanel>
 
             <ListView Name="lsvAllPosts" ItemsSource="{Binding PostCollection}" Height="152">
                 <ListView.View>
-                    <GridView>                        
+                    <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=postid}">Id</GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Path=title}">Title</GridViewColumn>
                     </GridView>
@@ -63,14 +63,14 @@
             </ListView>
 
             <CheckBox x:Name="chkUpdateSource" Height="20" Content="Update source entries with redirect message below. [URL] tag will be replaced with destination link."></CheckBox>
-            
-            <TextBox x:Name="txtUpdateSource" Height="46" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">My blog has moved. You can view this post at the following address: [URL]</TextBox>
 
-            <Button x:Name="btnMigrate" Height="30" Width="150" IsEnabled="False" Click="btnMigrate_Click">Migrate Selected Posts</Button>
+            <TextBox x:Name="txtUpdateSource" Height="46" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">My blog has moved. You can view this post at the following address: [URL]</TextBox>
+            <Button x:Name="btnMigrate" Height="30" IsEnabled="False" Click="btnMigrate_Click" Margin="204,0,321,0" Content="Migrate Selected Posts"/>
+            <CheckBox x:Name="IsBatch" Content="Batch Mode" Margin="0,0,591,0" Panel.ZIndex="-1" ToolTip="Do not stop in case of error" Height="21" IsChecked="True"/>
         </StackPanel>
-       
+
         <Label x:Name="lblStatus" DockPanel.Dock="Top" Content="Status..."></Label>
-        
-        <TextBox x:Name="txtStatus" TextWrapping="Wrap" Height="Auto" VerticalScrollBarVisibility="Visible" />		
-	</DockPanel>
+
+        <TextBox x:Name="txtStatus" TextWrapping="Wrap" Height="Auto" VerticalScrollBarVisibility="Visible" />
+    </DockPanel>
 </Window>

@@ -18,5 +18,6 @@ namespace BlogMigrator
       public static List<LogData> itemsToRewrite = new List<LogData>();
       public static bool rewritePosts;
       public static string rewriteMessage;
+      public static bool BatchMode;
 	}
 }
