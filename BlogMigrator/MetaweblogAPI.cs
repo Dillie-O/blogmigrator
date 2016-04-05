@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text; 
+using System.Text;
+using BlogMigrator.Helpers;
 using CookComputing.XmlRpc;
 
 namespace CookComputing.MetaWeblog
@@ -52,6 +53,18 @@ namespace CookComputing.MetaWeblog
     public object mt_convert_breaks;
     public string mt_text_more;
     public string mt_excerpt;
+
+      public override string ToString()
+      {
+          var sb = new StringBuilder(base.ToString());
+          sb.Append(" dateCreated=" + dateCreated);
+          sb.Append(" userid=" + userid);
+          sb.Append(" title=" + title);
+          sb.AppendLine(" description=" + description.Truncate(200));
+          sb.AppendLine(" categories=" +string.Join(",", categories));
+         
+          return sb.ToString();
+      }
   }
 
   public struct CategoryInfo

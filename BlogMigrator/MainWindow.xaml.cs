@@ -173,7 +173,7 @@ public partial class MainWindow : Window
                App.rewritePosts = false;
                App.rewriteMessage = null;
             }
-
+             App.BatchMode = IsBatch.IsChecked.Value; 
             if (App.sourceBlog.postsToMigrate.Count > 0)
             {
                migrationWorker.RunWorkerAsync(myArgs);

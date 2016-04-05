@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Windows;
 using CookComputing.MetaWeblog;
 using CookComputing.XmlRpc;
 
@@ -206,8 +208,8 @@ namespace BlogMigrator
       /// <param name="password">The blog password.</param>
       /// <param name="postItem">The post object.</param>
       /// <returns>Post object that was created by the server.</returns>
-      public Post InsertPost(string serviceUrl, string blogId, string username, 
-                             string password, Post postItem)
+      public Post InsertPost(string serviceUrl, string blogId, string username,
+                             string password, Post postItem, StreamWriter swLog, bool batchMode)
       {
          Post results;
          Post tempPost;
@@ -217,11 +219,11 @@ namespace BlogMigrator
          XmlRpcClientProtocol cp = (XmlRpcClientProtocol)proxy;
          cp.Url = serviceUrl;
          cp.NonStandard = XmlRpcNonStandard.All;
-
+         tempPost = new Post();
+      
          try
          {
-            tempPost = new Post();
-            tempPost.dateCreated = postItem.dateCreated;
+             tempPost.dateCreated = postItem.dateCreated;
             tempPost.userid = username;
             tempPost.title = postItem.title;
             tempPost.description = postItem.description;
@@ -238,13 +240,22 @@ namespace BlogMigrator
                throw new Exception("Post not created.");
             }
          }
-         catch (XmlRpcFaultException fex)
-         {
-            throw fex;
-         }
          catch (Exception ex)
          {
-            throw ex;
+            
+             var messageBoxText = "An error occurred migrating blog post:" +
+                                  Environment.NewLine + Environment.NewLine +
+                                  ex.ToString() +
+                                  Environment.NewLine + Environment.NewLine + tempPost.ToString();
+             swLog.WriteLine(messageBoxText);
+             if (!batchMode)
+             {
+                 var answer = MessageBox.Show(messageBoxText, "Error Migrating Post",
+                     MessageBoxButton.OKCancel, MessageBoxImage.Error);
+                 if (answer == MessageBoxResult.Cancel)
+                     throw;
+             }
+             return new Post();
          }
 
          return results;
